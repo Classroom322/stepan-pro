@@ -10,8 +10,7 @@
 
 ---
 ### 📸 Этап 2. Скриншот установленной ОС
-![Рабочий стол ОС](<img width="845" height="898" alt="image" src="https://github.com/user-attachments/assets/67cbd6a1-4a57-42a8-8a2a-04ba29e50b11" />
-) <!-- MARKER_IMAGE -->
+![Рабочий стол ОС](<img width="845" height="898" alt="image" src="https://github.com/user-attachments/assets/67cbd6a1-4a57-42a8-8a2a-04ba29e50b11" />) <!-- MARKER_IMAGE -->
 
 
 ---
