@@ -1,0 +1,29 @@
+name: Проверка отчета по Практической №2
+
+on: [push, pull_request]
+
+jobs:
+  check-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Клонирование репозитория
+        uses: actions/checkout@v4
+
+      - name: Валидация файла report.md
+        run: |
+          python3 -c "
+          import os, sys
+          path = 'report.md'
+          if not os.path.exists(path):
+              print('::error::Критическая ошибка! Файл report.md не найден.'); sys.exit(1)
+          with open(path, 'r', encoding='utf-8') as f:
+              content = f.read()
+          if '[Впишите' in content or '[ВСТАВЬТЕ' in content:
+              print('::error::Тест провален: Отчет содержит незаполненные шаблонные поля!'); sys.exit(1)
+          markers = ['<!-- MARKER_HYPERVISOR -->', '<!-- MARKER_RAM -->', '<!-- MARKER_IMAGE -->', '<!-- MARKER_LOG -->']
+          for marker in markers:
+              if marker not in content:
+                  print(f'::error::Тест провален: Удален маркер структуры {marker}'); sys.exit(1)
+          print('Поздравляем! Отчет успешно прошел валидацию.')
+          "
